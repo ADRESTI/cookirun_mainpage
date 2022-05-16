@@ -1,0 +1,1062 @@
+@charset "utf-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+$mobile : "screen and (max-width:640px)";
+
+$bg-color : #463E3A;
+
+@keyframes cookiesactive{
+  from{top: 0px;}
+  to{top: 20px;}
+}
+
+.deco {
+  width: 70px;
+  height: 40px;
+}
+
+h1 {
+  font-size: 38px;
+  margin: 10px 0;
+}
+
+h2 {
+  display: inline-block;
+  font-size: 30px;
+  font-weight: 600;
+  border-top: 1px solid #E0C595;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+#wrap {
+  color: #E0C595;
+  text-align: center;
+  margin: 0 auto;
+  font-family: 'Noto Sans KR', sans-serif;
+
+  >header {
+    position: relative;
+    height: 1076px;
+
+    >.topbar {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 40px;
+      line-height: 40px;
+      background-color: #191D24;
+
+      >.other_games {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        z-index: 1;
+
+        >a {
+          display: block;
+          margin-left: 320px;
+          color: #AEAEB3;
+          font-size: 16px;
+          font-weight: 900;
+          position: absolute;
+  
+          >span {
+            font-weight: initial;
+          } 
+        }//end of a
+        
+        >dl {
+          display: none;
+          position: absolute;
+          left: 320px;
+          top: 40px;
+          width: 500px;
+          height: 150px;
+          color: #eee;
+          background-color: #191D24;
+          border-top: 1px solid #AEAEB3;
+          
+          opacity: 90%;
+          cursor: pointer;
+
+          &.puzzle {
+            top: 191px;
+          }
+
+          &.brixity {
+            top: 342px;
+          }
+
+          >dt{
+            position: absolute;
+            left: 30px;
+            top: 20px;
+            
+            >img {
+              border-radius: 10%;
+            }//end of img
+          }//end of dt
+
+          >dd {
+            position: absolute;
+            top: 40px;
+            left: 150px;
+
+            >em {
+              font-size: 24px;
+            }
+
+            &:last-child{
+              top: 70px;
+              font-size: 16px;
+            }
+          }//end of dd
+        }//end of dl
+
+        >.develop {
+          display: none;
+          position: absolute;
+          left: 250px;
+          top: 390px;
+          color: #222;
+          width: 90px;
+          height: 28px;
+          line-height: 28px;
+          font-size: 14px;
+          font-weight: 500;
+          background-color: #EF8855;
+          border-radius: 20px;
+        }
+
+        >.cancel_btn {
+          display: none;
+          position: absolute;
+          top: 40px;
+          left: 500px;
+          width: 50px;
+          height: 50px;
+          text-indent: -9999px;
+          background-image: url(./../images/cancel.png);
+          background-position: center center;
+          background-size: 30px 30px;
+          background-repeat: no-repeat;
+          background-color: #AEAEB3;
+          opacity: 70%;
+          
+        }
+      }//end of .other_games
+
+      >p {
+        position: absolute;
+        right: 500px;
+        >a {
+          color: #AEAEB3;
+          font-size: 14px;
+        }
+      }
+
+      >.langbox {
+        position: absolute;
+        right: 400px;
+        >select {
+          border: none;
+          background-color: initial;
+          color: #AEAEB3;
+        }
+      }
+    }//end of .topbar
+
+    >.video_container {
+      width: 100%;
+      height: 100%;
+      >iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+    }
+
+    >.merge {
+      position: absolute;
+      top: 40px;
+      display: block;
+      width: 100%;
+      height: 1036px;
+      text-indent: -9999px;
+      background-color: #222;
+      opacity: 30%;
+    }
+
+    >.logo_etc {
+
+      >img {
+        position: absolute;
+        top: 200px;
+        left: calc(50% - 150px);
+        width: 300px;
+      }
+
+      >ul {
+        display: flex;
+        position: absolute;
+        
+        bottom: 100px;
+        left: calc(50% - 500px);
+
+        >li {
+          margin: 0 10px;
+        }
+      }
+    }
+  }//end of header
+
+  >.introduce {
+    background: #302A24;
+    height: 1000px;
+
+    >.slides{
+      position: relative;
+
+      >img {
+        position: absolute;
+        top: 150px;
+        left: calc(50% - 400px);
+        width: 800px;
+        z-index: 1;
+      }//end of img
+
+      >.slides_nav {
+        display: flex;
+        justify-content: center;
+
+        margin-top: 50px;
+        font-size: 20px;
+
+        >li {
+          width: 120px;
+          height: 50px;
+          line-height: 50px;
+          margin:0 20px;
+          border: 1px solid #C18243;
+
+          &.on {
+            >a {
+              color: #fff;
+              background-color: #493220;
+              font-weight: 600;
+            }
+          }
+
+          >a {
+            display: block;
+            height: 50px;
+            color: #C18243;
+          }
+        }//end of li
+      }//end of .slides_nav
+
+      >.slides_container {
+        overflow: hidden;
+        position: relative;
+        left: 568px;
+        top: 109px;
+
+        width: 760px;
+        height: 490px;
+        border: 1px solid #000;
+
+        >.contents {
+          display: flex;
+          position: absolute;
+          left: calc(-760px * 0);
+          top: 0;
+          width: calc(760px * 5);
+          text-indent: -9999px;
+          
+          >li {
+            width: 760px;
+            height: 490px;
+            background-position: center center;
+            background-size: contain;
+            background-repeat: no-repeat;
+
+            &:nth-child(1){background-image: url(./../images/gameContents-ko-01.jpg);}
+            &:nth-child(2){background-image: url(./../images/gameContents-ko-02.jpg);}
+            &:nth-child(3){background-image: url(./../images/gameContents-ko-03.jpg);}
+            &:nth-child(4){background-image: url(./../images/gameContents-ko-04.jpg);}
+            &:nth-child(5){background-image: url(./../images/gameContents-ko-05.jpg);}
+
+          }//end of li
+        }//end of ul.contents
+      }//end of .slides_container
+
+      >.slides_pagination {
+        display: flex;
+        text-indent: -9999px;
+        position: absolute;
+        bottom: -170px;
+        left: calc(50% - 80px);
+
+        >span {
+          width: 4px;
+          height: 4px;
+          margin: 0 10px;
+          border: 4px solid #C18243;
+          border-radius: 50%;
+          box-sizing: border-box;
+          cursor: pointer;
+
+          &.bar {
+            width: 40px;
+            height: 4px;
+            border: 4px solid #E2CA99;
+            border-radius: 30%;
+            transition: all ease 0.5s;
+          }
+
+        }//span
+      }//.slides_pagination
+
+      >a {
+        position: absolute;
+        display: block;
+        width: 60px;
+        height: 122px;
+        text-indent: -9999px;
+        background-image: url(./../images/slides_btn.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+
+        &.prev{
+          top: 350px;
+          left: 400px;
+        }
+        &.next{
+          top: 320px;
+          right: 400px;
+          transform: rotate(180deg);
+        }
+      }
+    }//end of .slides
+  }//end of .introduce
+
+  >.profile {
+    position: relative;
+    height: 1200px;
+    background-color: #594D46;
+
+    >h3 {
+      color: #C49F75;
+      margin-top: 20px;
+      font-size: 16px;
+    }
+
+    >ol {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+      font-weight: 500;
+      
+      >li {
+        border: 1px solid #E0C595;
+        height: 50px;
+        line-height: 50px;
+        width: 200px;
+        font-size: 20px;
+        margin: 0 15px;
+
+        &.on {
+
+          >a {
+            color: #302A24;
+            background-color: #FFF3CD;
+          }
+        }
+
+        >a {
+          color: #E0C595;
+          display: block;
+          height: 50px;
+          width: 200px;
+
+          // &:hover {
+          //   color: #281809;
+          //   background-color: #FFF3CD;
+          // }//end of a:hover
+        }//end of a
+      }//end of li
+    }//end of ol
+
+    //영웅쿠키
+    >.hero {
+      display: none;
+      >.hero_cookies {
+
+        >ul {
+          position: absolute;
+          left: 380px;
+          top: 310px;
+
+          >li {
+            margin-bottom: 20px;
+            
+            &:last-child{margin-bottom: 0;}
+            &.on {
+              >a {
+                >img {
+                  opacity: 100%;
+                }
+              }
+            }
+
+            >a {
+              display: block;
+              width: 130px;
+              height: 130px;
+
+              >img {
+                opacity: 70%;
+                width: 130px;
+                height: 130px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-image: url(./../images/profile_bg.png);
+              }
+            }//end of a
+          }//end of li
+        }//end of ul
+
+        >.cookies_frame {
+          position: absolute;
+          top: 300px;
+          left: 600px;
+          width: 475px;
+          height: 755px;
+          background-color: #594D46;
+          background-image: url(./../images/characterPortraitCard.png);
+          background-repeat: no-repeat;
+    
+          >p{
+            display: none;
+            >img {
+              position: absolute;
+              left: -130px;
+
+              animation-duration: 5s;
+              animation: cookiesactive 1.5s infinite alternate 0.5s ;
+            }
+          }//end of p
+        }//end of .cookies_frame
+      }//end of .hero_cookies
+
+      >.hero_script {
+        position: absolute;
+        top: 300px;
+        left: 1200px;
+        width: 400px;
+        color: #FFF3CD;
+        font-size: 20px;
+        text-align: left;
+
+        >li {
+          display: none;
+          position: absolute;
+          font-size: 26px;
+          >ol {
+            
+            >li{
+              margin-bottom: 10px;
+
+              &:nth-child(1){
+                font-size: 50px;
+                font-weight: 600;
+              }
+
+              &:nth-child(4){
+                font-size: 23px;
+                color: #C0A590;
+              }
+
+              >a {
+                width: 50px;
+                height: 50px;
+              }
+            }//end of li
+          }//end of ol
+        }//end of li
+      }//ul.hero_script
+    }//end of .hero
+
+    //용감한 쿠키와 친구들
+    >.brave {
+      display: none;
+      >.brave_cookies {
+
+        >ul {
+          position: absolute;
+          left: 380px;
+          top: 310px;
+
+          >li {
+            margin-bottom: 20px;
+            
+            &:last-child{margin-bottom: 0;}
+            &.on {
+              >a {
+                >img {
+                  opacity: 100%;
+                }
+              }
+            }
+
+            >a {
+              display: block;
+              width: 130px;
+              height: 130px;
+
+              >img {
+                opacity: 70%;
+                width: 130px;
+                height: 130px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-image: url(./../images/profile_bg.png);
+              }
+            }//end of a
+          }//end of li
+        }//end of ul
+
+        >.cookies_frame {
+          position: absolute;
+          top: 300px;
+          left: 600px;
+          width: 475px;
+          height: 755px;
+          background-color: #594D46;
+          background-image: url(./../images/characterPortraitCard.png);
+          background-repeat: no-repeat;
+    
+          >p{
+            display: none;
+            >img {
+              position: absolute;
+              left: -130px;
+
+              animation-duration: 5s;
+              animation: cookiesactive 1.5s infinite alternate 0.5s ;
+            }
+          }//end of p
+        }//end of .cookies_frame
+      }//end of .brave_cookies
+
+      >.brave_script {
+        position: absolute;
+        top: 300px;
+        left: 1200px;
+        width: 400px;
+        color: #FFF3CD;
+        font-size: 20px;
+        text-align: left;
+
+        >li {
+          display: none;
+          position: absolute;
+          font-size: 26px;
+          >ol {
+            
+            >li{
+              margin-bottom: 10px;
+
+              &:nth-child(1){
+                font-size: 50px;
+                font-weight: 600;
+              }
+
+              &:nth-child(4){
+                font-size: 23px;
+                color: #C0A590;
+              }
+
+              >a {
+                width: 50px;
+                height: 50px;
+              }
+            }//end of li
+          }//end of ol
+        }//end of li
+      }//ul.brave_script
+    }//end of .brave
+
+    //전설쿠키
+    >.legend {
+      display: none;
+      >.legend_cookies {
+
+        >ul {
+          position: absolute;
+          left: 380px;
+          top: 310px;
+
+          >li {
+            margin-bottom: 20px;
+            
+            &:last-child{margin-bottom: 0;}
+            &.on {
+              >a {
+                >img {
+                  opacity: 100%;
+                }
+              }
+            }
+
+            >a {
+              display: block;
+              width: 130px;
+              height: 130px;
+
+              >img {
+                opacity: 70%;
+                width: 130px;
+                height: 130px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-image: url(./../images/profile_bg.png);
+              }
+            }//end of a
+          }//end of li
+        }//end of ul
+
+        >.cookies_frame {
+          position: absolute;
+          top: 300px;
+          left: 600px;
+          width: 475px;
+          height: 755px;
+          background-color: #594D46;
+          background-image: url(./../images/characterPortraitCard.png);
+          background-repeat: no-repeat;
+
+          >p{
+            display: none;
+            >img {
+              position: absolute;
+              left: -130px;
+
+              animation-duration: 5s;
+              animation: cookiesactive 1.5s infinite alternate 0.5s ;
+            }
+          }//end of p
+        }//end of .cookies_frame
+      }//end of .legend_cookies
+
+      >.legend_script {
+        position: absolute;
+        top: 300px;
+        left: 1200px;
+        width: 400px;
+        color: #FFF3CD;
+        font-size: 20px;
+        text-align: left;
+
+        >li {
+          display: none;
+          position: absolute;
+          font-size: 26px;
+          >ol {
+            
+            >li{
+              margin-bottom: 10px;
+
+              &:nth-child(1){
+                font-size: 50px;
+                font-weight: 600;
+              }
+
+              &:nth-child(4){
+                font-size: 23px;
+                color: #C0A590;
+              }
+
+              >a {
+                width: 50px;
+                height: 50px;
+              }
+            }//end of li
+          }//end of ol
+        }//end of li
+      }//ul.legend_script
+    }//end of .legend
+
+    //악당쿠키
+    >.villain {
+      display: none;
+      >.villain_cookies {
+
+        >ul {
+          position: absolute;
+          left: 380px;
+          top: 310px;
+
+          >li {
+            margin-bottom: 20px;
+            
+            &:last-child{margin-bottom: 0;}
+            &.on {
+              >a {
+                >img {
+                  opacity: 100%;
+                }
+              }
+            }
+
+            >a {
+              display: block;
+              width: 130px;
+              height: 130px;
+
+              >img {
+                opacity: 70%;
+                width: 130px;
+                height: 130px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-image: url(./../images/profile_bg.png);
+              }
+            }//end of a
+          }//end of li
+        }//end of ul
+
+        >.cookies_frame {
+          position: absolute;
+          top: 300px;
+          left: 600px;
+          width: 475px;
+          height: 755px;
+          background-color: #594D46;
+          background-image: url(./../images/characterPortraitCard.png);
+          background-repeat: no-repeat;
+
+          >p{
+            display: none;
+            >img {
+              position: absolute;
+              left: -130px;
+
+              animation-duration: 5s;
+              animation: cookiesactive 1.5s infinite alternate 0.5s ;
+            }
+          }//end of p
+        }//end of .cookies_frame
+      }//end of .villain_cookies
+
+      >.villain_script {
+        position: absolute;
+        top: 300px;
+        left: 1200px;
+        width: 400px;
+        color: #FFF3CD;
+        font-size: 20px;
+        text-align: left;
+
+        >li {
+          display: none;
+          position: absolute;
+          font-size: 26px;
+          >ol {
+            
+            >li{
+              margin-bottom: 10px;
+
+              &:nth-child(1){
+                font-size: 50px;
+                font-weight: 600;
+              }
+
+              &:nth-child(4){
+                font-size: 23px;
+                color: #C0A590;
+              }
+
+              >a {
+                width: 50px;
+                height: 50px;
+              }
+            }//end of li
+          }//end of ol
+        }//end of li
+      }//ul.villain_script
+    }//end of .villain
+
+    >a {
+      position: absolute;
+      display: block;
+      width: 70px;
+      height: 40px;
+      text-indent: -9999px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-image: url(./../images/prev_btn.png);
+
+      &.file_prev {
+        bottom: 250px;
+        left: 1100px;
+      }
+
+      &.file_next {
+        bottom: 200px;
+        left: 1092px;
+        transform: rotate(180deg);
+      }
+    }
+  }//end of .profile
+
+  >.story {
+
+    >.story_sr {
+      margin: 50px auto;
+      >p {
+        font-size: 20px;
+        margin: 30px auto;
+      }
+
+      >.cookies_img {
+      position: relative;
+      height: 500px;
+
+      animation-duration: 5s;
+      animation: cookiesactive 1.5s infinite alternate 0.5s ;
+
+        >img {
+          position: absolute;
+
+          &:nth-child(1){left: calc(50% - 207.5px); z-index: 2;}
+          &:nth-child(2){bottom: 150px; left: 600px; z-index: 1;}
+          &:nth-child(3){bottom: 150px; left: 57%;}
+          &:nth-child(4){bottom: 200px; left: 380px;}
+          &:nth-child(5){top: -200px; right: 200px;}
+        }//img
+      }//end of .cookies_img
+    }//end of .story_sr
+  }//end of .story
+
+  
+  >.kingdom_media {
+    position: relative;
+    height: 950px;
+    background-color: $bg-color;
+
+    >.media_list {
+
+      >.media_container {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        width: 80%;
+        margin: 0 auto;
+
+        >p {
+          position: relative;
+          width: 400px;
+          height: 200px;
+          margin: 50px 0;
+          font-size: 24px;
+          border: 1px solid #E0C595;
+          box-sizing: border-box;
+          box-shadow: 20px 20px 10px #333;
+
+          background-position: center center;
+          background-size: cover;
+          background-repeat: no-repeat;
+
+          &:nth-child(1){background-image: url(./../images/kingdom_media1.jpg);}
+          &:nth-child(2){background-image: url(./../images/kingdom_media2.jpg);}
+          &:nth-child(3){background-image: url(./../images/kingdom_media3.jpg);}
+          &:nth-child(4){background-image: url(./../images/kingdom_media4.jpg);}
+          &:nth-child(5){background-image: url(./../images/kingdom_media5.jpg);}
+          &:nth-child(6){background-image: url(./../images/kingdom_media6.jpg);}
+
+          >a {
+            display: block;
+            color: #eee;
+            height: 260px;
+            line-height: 20em;
+          }
+
+          >span {
+            position: absolute;
+            top: calc(48% - 13px);
+            width: 0px;
+            height: 0px;
+            text-indent: -9999px;
+            border-width: 26px;
+            border-style: solid;
+            border-color: transparent transparent transparent #eee;
+            border-radius: 6%;
+            cursor: pointer;
+    
+          }
+        }//end of p
+      }//.media_container
+    }//.media_list
+
+    >h3 {
+      position: absolute;
+      left: calc(50% - 90px);
+      bottom: 60px;
+      color: #222;
+      width: 180px;
+      height: 90px;
+      line-height: 90px;
+      font-size: 30px;
+      background-image: url(./../images/more-back.svg);
+      background-size: contain;
+      cursor: pointer;
+    }
+  }//end of .kingdom_media
+
+  >footer {
+    background-color: #191C24;
+    height: 500px;
+    
+    >.social_media {
+      display: flex;
+      justify-content: center;
+      padding: 50px 0;
+
+      >p {
+        width: 90px;
+        height: 90px;
+        margin: 0 30px;
+        text-indent: -9999px;
+        background-image: url(./../images/social-media-ico.png);
+        background-repeat: no-repeat;
+
+        @media #{$mobile}{
+          width: 53px;
+          height: 53px;
+          margin: 0 15px;
+          background-size: 200px;
+          background-position: center center;
+        }
+        
+        &:nth-child(1){
+          background-position: -14px -83px;
+
+          @media #{$mobile}{
+            background-position: -8px -45px;
+          }
+        }
+        &:nth-child(2){
+          background-position: -133px -83px;
+
+          @media #{$mobile}{
+            background-position: -73px -45px;
+          }
+        }
+        &:nth-child(3){
+          background-position: -14px -187px;
+
+          @media #{$mobile}{
+            background-position: -7px -102px;
+          }
+        }
+        &:nth-child(4){
+          background-image: url(./../images/naver_blog_ico.png);
+          background-size: 130px 130px;
+          background-position: -20px -20px;
+
+          @media #{$mobile}{
+            background-size: 75px;
+            background-position: -12px -8px;
+          }
+        }
+
+        >a {
+          display: block;
+          height: 90px;
+
+          @media #{$mobile}{
+            height: 53px;
+          }
+        }
+      }//end of p
+    }//end of .social_media
+
+    >.policy {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 15px;
+      font-weight: 600;
+
+      @media #{$mobile}{
+        display: block;
+        
+      }
+
+      >li {
+        margin: 0 30px;
+        cursor: pointer;
+
+        @media #{$mobile} {
+          margin-bottom: 10px;
+        }
+
+        &:hover {
+          background-color: #eee;
+        }
+
+        >a {
+          display: block;
+          color: #eee;
+          width: 160px;
+          height: 40px;
+          line-height: 40px;
+          border: 1px solid #eee;
+          box-sizing: border-box;
+
+          @media #{$mobile}{
+            width: 100%;
+          }
+
+          &:hover {
+            color: #222;
+          }
+        }
+      }//end of li
+    }//end of .policy
+
+    >address {
+      color: #eee;
+      line-height: 30px;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    >strong {
+      color: #eee;
+      font-size: 60px;
+      font-weight: 900;
+    }
+  }//end of footer
+
+  >aside {
+    position: fixed;
+    bottom: 150px;
+    right: 100px;
+
+    >a {
+      display: block;
+      height: 100px;
+
+      >img {
+        width: 75px;
+        height: 100px;
+      }
+    }//end of a
+  }//end of aside
+}//end of #wrap
