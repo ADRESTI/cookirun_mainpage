@@ -17,6 +17,26 @@ $(function(){
 
 });
 
+//page navigation click event
+$(function(){
+  const $mnu = $('header > .kingdom_nav > ul > li > a');
+
+  const arrTopVal = [];
+  let nowIdx = null;
+
+  if($mnu.parent().first('li')){
+    $('html,body').animate({scrollTop:0},)
+  }
+
+  for(let i=0;i<$mnu.length;i++){
+    arrTopVal[i] = $('section').eq(i).offset()
+  }
+
+  console.log('arrTopVal =', arrTopVal);
+
+})
+
+
 
 //slide
 $(function(){
@@ -27,7 +47,7 @@ $(function(){
   const $next = $('.next');
   const $slpagination = $('.slides > .slides_pagination > span');
 
-  let intervalKey = null;
+  
   let nowIdx = 0;
 
   $slnav.on('click',function(evt){
@@ -95,317 +115,75 @@ $(function(){
 
 $(function(){
 
+  const $chars = $('.profile > div');
   const $charnav = $('.profile > ol > li');
-
-  const $hero = $('.hero');
-  const $brave = $('.brave');
-  const $legend = $('.legend');
-  const $villain = $('.villain');
-
-  const $heroIndicator = $('.hero_cookies > ul > li > a');
-  const $heroframe = $('.hero_cookies > .cookies_frame > p');
-  const $heroScript = $('.hero_script > li');
 
   const $profilePrev = $('.file_prev');
   const $profileNext = $('.file_next');
 
-  let nowIdx = 0;
+  let mainIdx = 0; //메인 네비게이션 인덱스번호
+  let subIdx = 0; //서브 네비게이션 인덱스 번호
 
-  $hero.show();
-  $brave.hide();
-  $legend.hide();
-  $villain.hide();
+  //메인 네비게이션 click 이벤트 구문
 
-  $heroframe.eq(nowIdx).show().siblings().removeClass('on');
-  $heroScript.eq(nowIdx).show();
-  $heroIndicator.eq(nowIdx).parent().addClass('on').siblings().removeClass('on');
-
-  const fadeFn = function(){
-    $heroIndicator.eq(nowIdx).parent().addClass('on').siblings().removeClass('on');
-
-    $heroframe.eq(nowIdx).fadeIn(500).siblings().fadeOut(500);
-    
-    $heroScript.eq(nowIdx).addClass('on').siblings().removeClass('on');
-    $heroScript.eq(nowIdx).fadeIn(500).siblings().fadeOut(500);
-  }
-
-  $heroIndicator.on('click',function(evt){
-    evt.preventDefault();
-    $heroIndicator.eq(nowIdx).addClass('on').siblings().removeClass('on');
-
-    nowIdx = $heroIndicator.index(this);
-
-    fadeFn();
-  });
-
-  $profilePrev.on('click', function(evt){
-    evt.preventDefault();
-
-    if(nowIdx>0){
-      nowIdx--;
-    }else{
-      nowIdx = 4;
-    }
-
-    fadeFn();
-  });
-
-  $profileNext.on('click', function(evt){
-    evt.preventDefault();
-
-    if(nowIdx<4){
-      nowIdx++;
-    }else{
-      nowIdx = 0;
-    }
-    fadeFn();
-  });
-
-  $charnav.on('click', function(evt){
-    evt.preventDefault();
-
-    nowIdx = $charnav.index(this);
-    $charnav.eq(nowIdx).addClass('on').siblings().removeClass('on');
-  });
-
-  $charnav.eq(0).on('click',function(){
-
-    $hero.show();
-    $brave.hide();
-    $legend.hide();
-    $villain.hide();
-
-    $heroframe.eq(nowIdx).show();
-    $heroScript.eq(nowIdx).show();
-    $heroIndicator.eq(nowIdx).parent().addClass('on').siblings().removeClass('on');
-  
+  $charnav.on('click',function(evt){
     const fadeFn = function(){
-      $heroIndicator.eq(nowIdx).parent().addClass('on').siblings().removeClass('on');
-  
-      $heroframe.eq(nowIdx).fadeIn(500).siblings().fadeOut(500);
-      
-      $heroScript.eq(nowIdx).addClass('on').siblings().removeClass('on');
-      $heroScript.eq(nowIdx).fadeIn(500).siblings().fadeOut(500);
+      $frame.eq(subIdx).stop().fadeIn(300).siblings().removeClass('on').fadeOut(300);
+      $script.eq(subIdx).stop().fadeIn(300).siblings().fadeOut(300);
     }
-  
-    $heroIndicator.on('click',function(evt){
+    evt.preventDefault();
+
+    mainIdx = $charnav.index(this);
+    subIdx = 0;
+
+    $charnav.eq(mainIdx).addClass('on').siblings().removeClass('on');
+    $chars.eq(mainIdx).show().siblings('div').hide();
+
+    const $frame = $chars.eq(mainIdx).find('p');
+		const $script = $chars.eq(mainIdx).find('ul').last().children('li');
+    
+    fadeFn();
+
+    const $subnav = $chars.eq(mainIdx).find('ul').first().find('a');
+
+    //서브네비게이션에 대한 click 이벤트, 메인 네비게이션 이벤트 구문 안에 넣어서 안에서 맞물려서 돌아가게끔 함
+    $subnav.on('click', function(evt){
       evt.preventDefault();
-      $heroIndicator.eq(nowIdx).addClass('on').siblings().removeClass('on');
-  
-      nowIdx = $heroIndicator.index(this);
-  
+
+      subIdx = $subnav.index(this);
+
+      $(this).parent().addClass('on').siblings().removeClass('on');
+
       fadeFn();
     });
 
-    const heroIdx = 0;
-
-    $profilePrev.on('click', function(evt){
-      evt.preventDefault();
-  
-      if(heroIdx>0){
-        heroIdx--;
-      }else{
-        heroIdx = 4;
-      }
-  
-      fadeFn();
-    });
-  
-    $profileNext.on('click', function(evt){
-      evt.preventDefault();
-  
-      if(heroIdx > 4){
-        heroIdx++;
-      }else{
-        heroIdx = 0;
-      }
-
-      fadeFn();
-    });
+    $subnav.eq(subIdx).trigger('click'); //강제 이벤트 발생
   });
 
-  $charnav.eq(1).on('click',function(){
+  $charnav.eq(mainIdx).trigger('click'); //강제 이벤트 발생
 
-    const $brave = $('.brave');
-    const $braveIndicator = $('.brave_cookies > ul > li > a');
-    const $braveframe = $('.brave_cookies > .cookies_frame > p');
-    const $braveScript = $('.brave_script > li');
+  //이전버튼
+  $profilePrev.on('click',function(evt){
+    evt.preventDefault();
 
-    let braveIdx = 0;
+    if (subIdx > 0){
+      subIdx--;
+    }else{
+      subIdx = 4;
+    }
 
-    $hero.hide();
-    $brave.show();
-    $legend.hide();
-    $villain.hide();
-
-    $braveframe.eq(braveIdx).show();
-    $braveScript.eq(braveIdx).show().siblings().removeClass('on');
-    $braveIndicator.eq(braveIdx).parent().addClass('on');
-
-    const braveFn = function(){
-      $braveIndicator.eq(braveIdx).parent().addClass('on').siblings().removeClass('on');
-  
-      $braveframe.eq(braveIdx).fadeIn(500).siblings().fadeOut(500);
-  
-      $braveScript.eq(braveIdx).addClass('on').siblings().removeClass('on');
-      $braveScript.eq(braveIdx).fadeIn(500).siblings().fadeOut(500);
-    };
-  
-    $braveIndicator.on('click',function(evt){
-      evt.preventDefault();
-      $braveIndicator.eq(braveIdx).parent().addClass('on').siblings().removeClass('on');
-  
-      braveIdx = $braveIndicator.index(this);
-  
-      braveFn();
-    });
-
-    $profilePrev.on('click', function(evt){
-      evt.preventDefault();
-  
-      if(braveIdx>0){
-        braveIdx--;
-      }else{
-        braveIdx = 4;
-      }
-  
-      braveFn();
-    });
-  
-    $profileNext.on('click', function(evt){
-      evt.preventDefault();
-  
-      if(braveIdx<4){
-        braveIdx++;
-      }else{
-        braveIdx = 0;
-      }
-
-      braveFn();
-    });
+    $chars.eq(mainIdx).find('ul').first().find('a').eq(subIdx).trigger('click');
   });
 
-//전설쿠키
-  $charnav.eq(2).on('click',function(){
+  //다음버튼
+  $profileNext.on('click',function(evt){
+    evt.preventDefault();
 
-    const $legendIndicator = $('.legend_cookies > ul > li > a');
-    const $legendframe = $('.legend_cookies > .cookies_frame > p');
-    const $legendScript = $('.legend_script > li');
-
-    let legendIdx = 0;
-
-    $hero.hide();
-    $brave.hide();
-    $legend.show();
-    $villain.hide();
-
-    $legendframe.eq(legendIdx).show();
-    $legendScript.eq(legendIdx).show().siblings().removeClass('on');
-    $legendIndicator.eq(legendIdx).parent().addClass('on');
-
-    const legendFn = function(){
-      $legendIndicator.eq(legendIdx).parent().addClass('on').siblings().removeClass('on');
-
-      $legendframe.eq(legendIdx).fadeIn(500).siblings().fadeOut(500);
-
-      $legendScript.eq(legendIdx).addClass('on').siblings().removeClass('on');
-      $legendScript.eq(legendIdx).fadeIn(500).siblings().fadeOut(500);
-    };
-
-    $legendIndicator.on('click',function(evt){
-      evt.preventDefault();
-      $legendIndicator.eq(legendIdx).parent().addClass('on').siblings().removeClass('on');
-
-      legendIdx = $legendIndicator.index(this);
-
-      legendFn();
-    });
-
-    $profilePrev.on('click', function(evt){
-      evt.preventDefault();
-
-      if(legendIdx>0){
-        legendIdx--;
-      }else{
-        legendIdx = 4;
-      }
-
-      legendFn();
-    });
-
-    $profileNext.on('click', function(evt){
-      evt.preventDefault();
-
-      if(legendIdx<4){
-        legendIdx++;
-      }else{
-        legendIdx = 0;
-      }
-
-      legendFn();
-    });
+    if(subIdx < 4){
+      subIdx++;
+    }else{
+      subIdx = 0;
+    }
+    $chars.eq(mainIdx).find('ul').first().find('a').eq(subIdx).trigger('click');
   });
-
-  //악당쿠키
-  $charnav.eq(3).on('click',function(){
-
-    const $villainIndicator = $('.villain_cookies > ul > li > a');
-    const $villainframe = $('.villain_cookies > .cookies_frame > p');
-    const $villainScript = $('.villain_script > li');
-
-    let villainIdx = 0;
-
-    $hero.hide();
-    $brave.hide();
-    $legend.hide();
-    $villain.show();
-
-    $villainframe.eq(villainIdx).show();
-    $villainScript.eq(villainIdx).show().siblings().removeClass('on');
-    $villainIndicator.eq(villainIdx).parent().addClass('on');
-
-    const villainFn = function(){
-      $villainIndicator.eq(villainIdx).parent().addClass('on').siblings().removeClass('on');
-
-      $villainframe.eq(villainIdx).fadeIn(500).siblings().fadeOut(500);
-
-      $villainScript.eq(villainIdx).addClass('on').siblings().removeClass('on');
-      $villainScript.eq(villainIdx).fadeIn(500).siblings().fadeOut(500);
-    };
-
-    $villainIndicator.on('click',function(evt){
-      evt.preventDefault();
-      $villainIndicator.eq(villainIdx).parent().addClass('on').siblings().removeClass('on');
-
-      villainIdx = $villainIndicator.index(this);
-
-      villainFn();
-    });
-
-    $profilePrev.on('click', function(evt){
-      evt.preventDefault();
-
-      if(villainIdx>0){
-        villainIdx--;
-      }else{
-        villainIdx = 4;
-      }
-
-      legendFn();
-    });
-
-    $profileNext.on('click', function(evt){
-      evt.preventDefault();
-
-      if(villainIdx<4){
-        villainIdx++;
-      }else{
-        villainIdx = 0;
-      }
-
-      villainFn();
-    });
-  });
-
-
 });

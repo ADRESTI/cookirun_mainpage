@@ -152,7 +152,7 @@ body {
 
       >p {
         position: absolute;
-        right: 500px;
+        right: 480px;
         >a {
           color: #AEAEB3;
           font-size: 14px;
@@ -161,7 +161,7 @@ body {
 
       >.langbox {
         position: absolute;
-        right: 400px;
+        right: 350px;
         >select {
           border: none;
           background-color: initial;
@@ -195,9 +195,9 @@ body {
 
       >img {
         position: absolute;
-        top: 200px;
-        left: calc(50% - 150px);
-        width: 300px;
+        top: 300px;
+        left: calc(50% - 250px);
+        width: 500px;
       }
 
       >ul {
@@ -212,6 +212,73 @@ body {
         }
       }
     }
+
+    >.main_play {
+      position: absolute;
+      top: 650px;
+      left: calc(50% - 75px);
+      width: 150px;
+      height: 150px;
+      z-index: 1;
+
+      >img {
+        width: 150px;
+        height: 150px;  
+      }
+    }
+
+    >.kingdom_nav {
+      position: fixed;
+      top: 40px;
+      width: 100%;
+      height: 80px;
+      background-color: #222;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 2;
+
+      >ul {
+        display: flex;
+        flex-flow: row nowrap;
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        margin-left: -629.415px;
+        
+        >li{
+          margin: 0 70px;
+          line-height: 60px;
+
+          &:nth-child(1){
+            width: 106px;
+            height: 55px;
+            
+            text-indent: -9999px;
+            background-image: url(./../images/flat-logo-ko.png);
+            
+            background-repeat: no-repeat;
+            background-size: cover;
+          }
+
+          >a {
+            display: block;
+            height: 60px;
+            color: #fff;
+            font-size: 20px;
+
+            &:hover {
+              color: transparent;
+              background-image: url(./../images/font_color.jpg);
+              background-size: contain;
+              background-clip: text;
+              // background: linear-gradient(to right, yellow, gold);
+              -webkit-background-clip: text;
+              // -webkit-text-fill-color: transparent;
+            }
+
+          }//end of a
+        }//end of li
+      }//end of ul
+    }//end of .kingdom_nav
   }//end of header
 
   >.introduce {
@@ -262,11 +329,12 @@ body {
       >.slides_container {
         overflow: hidden;
         position: relative;
-        left: 568px;
         top: 109px;
+        left: 50%;
 
         width: 760px;
         height: 490px;
+        margin-left: -380px;
         border: 1px solid #000;
 
         >.contents {
@@ -323,6 +391,7 @@ body {
 
       >a {
         position: absolute;
+        left: 50%;
         display: block;
         width: 60px;
         height: 122px;
@@ -333,11 +402,11 @@ body {
 
         &.prev{
           top: 350px;
-          left: 400px;
+          margin-left: -470px;
         }
         &.next{
           top: 320px;
-          right: 400px;
+          margin-left: 410px;
           transform: rotate(180deg);
         }
       }
@@ -849,59 +918,66 @@ body {
     height: 950px;
     background-color: $bg-color;
 
-    >.media_list {
+    >.media_container {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-around;
+      width: 80%;
+      margin: 0 auto;
 
-      >.media_container {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-around;
-        width: 80%;
-        margin: 0 auto;
+      >div {
+        position: relative;
+        width: 400px;
+        height: 220px;
+        margin: 50px 0;
+        font-size: 24px;
+        border: 1px solid #E0C595;
+        // box-sizing: border-box;
+        box-shadow: 20px 20px 10px #333;
+        background-image: url(./../images/eachplaybtn.png);
+        background-size: cover;
+        background-position: center center;
 
-        >p {
-          position: relative;
+        >a {
+          position: absolute;
+          overflow: hidden;
+          display: block;
+          color: #eee;
           width: 400px;
-          height: 200px;
-          margin: 50px 0;
-          font-size: 24px;
-          border: 1px solid #E0C595;
-          box-sizing: border-box;
-          box-shadow: 20px 20px 10px #333;
-
-          background-position: center center;
-          background-size: cover;
-          background-repeat: no-repeat;
-
-          &:nth-child(1){background-image: url(./../images/kingdom_media1.jpg);}
-          &:nth-child(2){background-image: url(./../images/kingdom_media2.jpg);}
-          &:nth-child(3){background-image: url(./../images/kingdom_media3.jpg);}
-          &:nth-child(4){background-image: url(./../images/kingdom_media4.jpg);}
-          &:nth-child(5){background-image: url(./../images/kingdom_media5.jpg);}
-          &:nth-child(6){background-image: url(./../images/kingdom_media6.jpg);}
-
-          >a {
-            display: block;
-            color: #eee;
-            height: 260px;
-            line-height: 20em;
-          }
-
-          >span {
+          height: 220px;
+          line-height: 20em;
+          z-index: 1;
+          // background-image: url(./../images/eachplaybtn.png);
+          // background-size: cover;
+          // background-position: center center;
+          
+          >img {
             position: absolute;
-            top: calc(48% - 13px);
-            width: 0px;
-            height: 0px;
-            text-indent: -9999px;
-            border-width: 26px;
-            border-style: solid;
-            border-color: transparent transparent transparent #eee;
-            border-radius: 6%;
-            cursor: pointer;
-    
+            top: -40px;
+            display: block;
+            width: 400px;
+            height: 300px;
           }
-        }//end of p
-      }//.media_container
-    }//.media_list
+        }// end of a
+        >span {
+          position: absolute;
+          bottom: -40px;
+          display: block;
+          color: #fff;
+          margin-left: 10px;
+          z-index: 1;
+        }
+        >img {
+          position: relative;
+          top: 30px;
+          left: 10px;
+          width: 200px;
+          height: 180px;
+          z-index: 1;
+          cursor: pointer;
+        }
+      }//end of div
+    }//end of .media_container
 
     >h3 {
       position: absolute;
