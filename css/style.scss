@@ -54,7 +54,7 @@ body {
         position: absolute;
         left: 0;
         width: 100%;
-        z-index: 1;
+        z-index: 4;
 
         >a {
           display: block;
@@ -226,16 +226,26 @@ body {
         height: 150px;  
       }
     }
-
+    
     >.kingdom_nav {
-      position: fixed;
+      position: absolute;
       top: 40px;
       width: 100%;
       height: 80px;
       background-color: #222;
       background-color: rgba(0, 0, 0, 0.8);
-      z-index: 2;
+      z-index: 3;
 
+    //스크롤바 조정시 메뉴 상단고정
+    // >.navfix {
+    //   position: fixed;
+    //   top: 0;
+    //   width: 100%;
+    //   height: 80px;
+    //   background-color: #222;
+    //   background-color: rgba(0, 0, 0, 0.8);
+    //   z-index: 3;
+    // }
       >ul {
         display: flex;
         flex-flow: row nowrap;
@@ -265,6 +275,7 @@ body {
             color: #fff;
             font-size: 20px;
 
+            >.on,
             &:hover {
               color: transparent;
               background-image: url(./../images/font_color.jpg);
@@ -884,12 +895,15 @@ body {
   }//end of .profile
 
   >.story {
-
+    height: 2000px;
+    background-image: url(./../images/storybackimg2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
     >.story_sr {
-      margin: 50px auto;
+      margin: 50px auto 0;
       >p {
         font-size: 20px;
-        margin: 30px auto;
+        padding: 30px auto;
       }
 
       >.cookies_img {

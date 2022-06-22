@@ -19,22 +19,77 @@ $(function(){
 
 //page navigation click event
 $(function(){
-  const $mnu = $('header > .kingdom_nav > ul > li > a');
+  const $mnu = $('header > .kingdom_nav > ul > li');
+  const $mnu_2 = $('header > .kingdom_nav > ul > li:nth-child(2)'); //1076
+  const $mnu_3 = $('header > .kingdom_nav > ul > li:nth-child(3)'); //2076
+  const $mnu_4 = $('header > .kingdom_nav > ul > li:nth-child(4)'); //3276
+  const $mnu_5 = $('header > .kingdom_nav > ul > li:nth-child(5)'); //4566.984375
+  const arrTopVal =[]
+  const $navSet = $('.kingdom_nav').offset();
 
-  const arrTopVal = [];
-  let nowIdx = null;
+  //스크롤 시 nav 고정
+  $(window).scroll(function(){
+    if($(document).scrollTop()>$navSet.top){
+      // $('.kingdom_nav').removeClass('.kingdom_nav');
+      $('.kingdom_nav').css({
+        position: 'fixed',
+        top: 0
+      });
+    }else {
+      $('.kingdom_nav').css({
+        position: 'absolute',
+        top: 40
+      });
+    };
+  });
 
-  if($mnu.parent().first('li')){
-    $('html,body').animate({scrollTop:0},)
+  const $section =$('section');
+
+  console.log('section 태그 갯수는',$section.length);
+
+  for(let i=0;i<$section.length;i++){
+    arrTopVal.push($section.eq(i).offset().top);
   }
+  console.log('arrTopVal =',arrTopVal);
+  
 
-  for(let i=0;i<$mnu.length;i++){
-    arrTopVal[i] = $('section').eq(i).offset()
-  }
+  $mnu_2.on('click',function(evt){
+    evt.preventDefault();
+    const nowIdx = $mnu.index(this);
+    $mnu.eq(nowIdx).addClass('on').siblings().removeClass('on');
 
-  console.log('arrTopVal =', arrTopVal);
+    $('html,body').animate({
+      scrollTop:1076
+    });
+  });
+  $mnu_3.on('click',function(evt){
+    evt.preventDefault();
+    const nowIdx = $mnu.index(this);
+    $mnu.eq(nowIdx).addClass('on').siblings().removeClass('on');
 
-})
+    $('html,body').animate({
+      scrollTop:2076
+    });
+  });
+  $mnu_4.on('click',function(evt){
+    evt.preventDefault();
+    const nowIdx = $mnu.index(this);
+    $mnu.eq(nowIdx).addClass('on').siblings().removeClass('on');
+
+    $('html,body').animate({
+      scrollTop:3276
+    });
+  });
+  $mnu_5.on('click',function(evt){
+    evt.preventDefault();
+    const nowIdx = $mnu.index(this);
+    $mnu.eq(nowIdx).addClass('on').siblings().removeClass('on');
+
+    $('html,body').animate({
+      scrollTop:5276
+    });
+  });
+});
 
 
 
@@ -187,3 +242,13 @@ $(function(){
     $chars.eq(mainIdx).find('ul').first().find('a').eq(subIdx).trigger('click');
   });
 });
+
+//미디어 라이트박스
+
+//플레이버튼 누르면 라이트박스 발동, 유튜브에서 html 코드 가져와서 그림자 라이트박스로 뜨도록.
+
+$(function(){
+
+  const $kingdomMedia = $('.kingdom_media');
+  const $lightbox = $('')
+})
